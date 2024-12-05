@@ -1,0 +1,52 @@
+{% extends 'main.html' %} {% block content %}
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    
+    {% if pred == 1 %}
+    <div class="jumbotron">
+      <h1 class="display-4" style="margin-bottom: 25px; width: max-content">
+        You have a Kidney Disease !
+      </h1>
+      <p class="lead" style="font-size: 20px">
+        Please Consult the Doctor Immideately. It was too risky without
+        consultation. Make sure of health in your diet.
+      </p>
+      <hr class="my-4" />
+      <p class="lead" style="font-size: 20px">
+        Proper Doctor Consultation Needed.
+      </p>
+      <a
+        class="btn btn-primary btn-lg"
+        href="https://www.who.int/"
+        role="button"
+        style="margin-top: 20px"
+        >Learn more</a
+      >
+    </div>
+    {% else %}
+    <div class="jumbotron">
+      <h1 class="display-4" style="margin-bottom: 25px">
+        Great! You are Healthy
+      </h1>
+      <p class="lead" style="font-size: 20px">
+        You are Absolutely Alright ! There is no Marks for Kidney Disease. Enjoy
+        you life with full of Happiness.
+      </p>
+      <hr class="my-4" />
+      <p class="lead" style="font-size: 20px">
+        Be careful at your health. Nothing is important than your health.
+      </p>
+      <a
+        class="btn btn-primary btn-lg"
+        href="https://www.who.int/"
+        role="button"
+        style="margin-top: 20px"
+        >Learn more</a
+      >
+    </div>
+    {% endif %}
+  </div>
+  <div class="col-md-3"></div>
+</div>
+{% endblock %}

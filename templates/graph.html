@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="og:title" content="Kidney-Disease Prediction" />
+    <meta name="author" content="Venkata Sreeram" />
+    <meta name="og:image" content="static/kid4.png" />
+    <meta
+      name="Keywords"
+      content="Flask, Machine Learning, Deep Learning, Artificial Intelligence, AI, ML,DL, Web Development"
+    />
+    <meta
+      name="description"
+      content="A Machine Learning and Deep Learning based webapp for Multiple Disease Prediction."
+    />
+    <title>Kidney Disease Predictor</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename = 'kid4.png') }}"
+      type="image/icon type"
+    />
+    <p>Kidney Disease</p>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      header {
+        height: 50px;
+        font-family: poppins, sans-serif;
+      }
+      footer {
+        height: 75px;
+        background: black;
+      }
+
+      /* Trick */
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      footer {
+        padding: 10px;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    </style>
+  </head>
+  <body style="background-color: #e9ecef">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark"
+      style="background-image: linear-gradient(
+        to bottom left,
+        #bb4bee,
+        #8337e3,
+        #4979f3,
+        #a2089b,
+        #199af7
+      ) !important;border-radius: 2px;"
+    
+    >
+      <a
+        style="text-decoration: none; color: white"
+        href="{{ url_for('home') }}"
+      >
+        <h1>
+          <img
+            src="{{ url_for('static', filename = 'kid4.png') }}"
+            alt=""
+            style="height: 57px"
+          />&nbsp;&nbsp;KIDNEY DISEASE PREDICTION
+        </h1></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a href="{{ url_for('home') }}" class="nav-link"><h4>Home</h4></a>
+          </li>
+          <!-- <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('kidneyPage') }}"
+              ><h3>Kidney-Disease</h3></a
+            >
+          </li> -->
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('workingPage') }}"
+              ><h4>About</h4></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <main>
+        <div class="container-fluid" style="margin-bottom: 1px;">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <h2>Graph Analysis</h2>
+              <!-- Chart.js graph for accuracy -->
+              <canvas id="accuracyChart" width="400" height="200"></canvas>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <h2>Classification Report</h2>
+                  <!-- Classification metrics image -->
+                  <img src="{{ url_for('static', filename='i2.png') }}" alt="Classification Metrics" style="max-width: 100%;">
+                </div>
+                <div class="col-md-6">
+                  <h2>Confusion Matrix</h2>
+                  <!-- Confusion matrix image -->
+                  <img src="{{ url_for('static', filename='image.png') }}" alt="Confusion Matrix" style="max-width: 100%;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  <script>
+    var ctx = document.getElementById('accuracyChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Training Accuracy', 'Testing Accuracy'],
+        datasets: [{
+          label: 'Accuracy',
+          data: [100, 98.33],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.2)', // Change to dark blue
+            'rgba(255, 99, 132, 0.2)', // Change to dark red
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)', // Change to dark blue
+            'rgba(255, 99, 132, 1)', // Change to dark red
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</html>

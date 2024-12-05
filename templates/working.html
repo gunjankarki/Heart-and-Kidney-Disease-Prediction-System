@@ -1,0 +1,208 @@
+{% extends 'main.html' %} {% block content %} {% if message %}
+<div class="alert alert-danger">{{ message }}</div>
+{% endif %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Kidney Disease Prediction</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.0/examples/carousel/"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      .btn {
+        background-image: linear-gradient(
+          to bottom left,
+          #a648d2,
+          #8337e3,
+          #4979f3,
+          #1ad2fb
+        );
+      }
+      h2 {
+        font-family: poppins, sans-serif;
+      }
+    </style>
+  </head>
+  <body style="background-color: #e9ecef">
+    <main role="main">
+      
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+        <div class="row" style="margin-top: 40px">
+          <div class="col-lg-4">
+            <img
+              class="rounded-circle"
+              src="https://cdn.icon-icons.com/icons2/2593/PNG/512/data_icon_154512.png"
+              alt="Generic placeholder image"
+              width="140"
+              height="140"
+            />
+            <h2>Data-Set</h2>
+            <p>
+              We have used the data set available in Kaggle - Chronic-Kidney
+              Disease Prediction. After Classifying the data, Preprocessin and
+              performed the Exploratory Data Analysis. This data set contains
+              about 339 records of data in various categories.
+            </p>
+            <p>
+              <a
+                class="btn btn-secondary"
+                href="https://www.kaggle.com/datasets/mansoordaku/ckdisease/data"
+                role="button"
+                target="_blank"
+                >View details &raquo;</a
+              >
+            </p>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img
+              class="rounded-circle"
+              src="static/a6.svg"
+              alt="Generic placeholder image"
+              width="140"
+              height="140"
+            />
+            <h2>Metrics</h2>
+            <p>
+              Adaboost is one of the Boosting Algorithm.Kindly click below link to see the Metrics of Adaboost for CKD
+            </p>
+            <br>
+            <br>
+            <br>
+            <p>
+              <a
+                class="btn btn-secondary"
+                href="/graph"
+              
+                role="button"
+                >View Metris &raquo;</a
+              >
+            </p>
+          </div>
+          <!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img
+              class="rounded-circle"
+              src="https://cdn.pixabay.com/photo/2016/05/25/13/18/target-1414775_960_720.png"
+              alt="Generic placeholder image"
+              width="140"
+              height="140"
+            />
+            <h2>Accuracy</h2>
+            <p>
+              AdaBoost is a decision-tree-based ensemble Machine Learning
+              algorithm that uses a gradient boosting framework. In prediction
+              problems involving unstructured data. After modelling our data,
+              the Accuracy is <b>98%.</b> So far we achieved a Good accuracy.
+            </p>
+            <p>
+              <a
+                class="btn btn-secondary"
+                href="https://analyticsvidhya.com/blog/2021/09/adaboost-algorithm-a-complete-guide-for-beginners/#:~:text=AdaBoost%20algorithm%2C%20short%20for%20Adaptive,assigned%20to%20incorrectly%20classified%20instances."
+                role="button"
+                target="_blank"
+                >View details &raquo;</a
+              >
+            </p>
+          </div>
+          <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+          <div class="col-md-12">
+            <h2 class="featurette-heading">How it will work</h2>
+            <p class="lead">
+              This prediction will be used in healthcare Applications. As it was
+              very important to predict weather the patient was having any
+              chances of getting this Kidney Disease. This project comprises
+              with the deployement too. we can deploy this project y means of
+              Python web servers available in the market.
+            </p>
+          </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+          <div class="col-md-12">
+            <h2 class="featurette-heading">Conflicts & Modifications</h2>
+            <p class="lead">
+              Since, we deployed our model in Flask - Framework. As, this was a
+              simple classification and regression analysis. There might be some
+              problems arises during the installationof Tensorflow & Python
+              Versions. we must make sure of Installing the same versions. In
+              order to avoid this, We must ensure to install the correct
+              dependencies - before running this project.
+            </p>
+          </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <div class="row featurette">
+          <div class="col-md-12">
+            <h2 class="featurette-heading">Future implementations</h2>
+            <p class="lead">
+              Django - Frameowrk will be more suitable for the deployement at
+              any case. At the same, adding the feature - Upload image and
+              process the X-Ray image and predict for any chances of getting the
+              disease.
+            </p>
+          </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <!-- /END THE FEATURETTES -->
+      </div>
+
+  `    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>'
+        );
+    </script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+  </body>
+</html>
+{% endblock%}

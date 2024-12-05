@@ -1,0 +1,523 @@
+{% extends 'main.html' %} {% block content %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Kidney Disease Prediction</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.0/examples/carousel/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      select:required:invalid {
+        color: gray;
+      }
+      option[value=''][disabled] {
+        display: none;
+      }
+      option {
+        color: black;
+      }
+      .btn {
+        background-image: linear-gradient(
+          to bottom left,
+          #a648d2,
+          #8337e3,
+          #4979f3,
+          #1ad2fb
+        );
+      }
+    </style>
+  </head>
+  <body style="background-color: #e9ecef">
+    <main role="main">
+      <div class="row">
+        <div class="col-lg-6">
+          <section
+            class="p-3 p-md-5 text-black text-left rounded"
+            style="margin-top: auto"
+          >
+            <div class="col">
+              <h1 class="jumbotron-heading" style="font-weight: 700">
+                Chronic Kidney Disease Prediction
+              </h1>
+              <p class="lead">
+                Chronic kidney disease (CKD) is one of the most critical health
+                problems due to its increasing prevalence. In this paper, we aim
+                to test the ability of machine learning algorithms for the
+                prediction of chronic kidney disease using the smallest subset
+                of features
+              </p>
+              <p>
+                <a
+                  href="https://www.mayoclinic.org/diseases-conditions/chronic-kidney-disease/symptoms-causes/syc-20354521"
+                  class="btn btn-primary my-2"
+                  style="margin-bottom: 20px"
+                  >Read More about the Disease</a
+                >
+              </p>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6">
+          <section class="text-black rounded text-center">
+            <div>
+              <center>
+                <h3 style="font-weight: 300 ;margin-top: -40px;">Kidney Disease Predictor</h3>
+              </center>
+              <div
+                class="card card-body"
+                style="
+                  border: none;
+                  border-radius: 15px;
+                  margin-top: 60px;
+                  background-color: #d7d6e5;
+                  box-shadow: 0 16px 18px 0 rgba(0, 0, 0, 0.2),
+                    0 6px 20px 0 rgba(0, 0, 0, 0.5);
+                "
+              >
+                <form  class="form-horizontal"
+                  action="/predict"
+                  method="POST"
+                >
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="age"
+                          placeholder="age"
+                          min="12"
+                          max="100"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="bp"
+                          step="0.01"
+                          placeholder="blood-pressure in mm/Hg"
+                          min="50"
+                          max="180"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="al"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected hidden>
+                            albumin
+                          </option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="su"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected hidden>
+                            sugar
+                          </option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="rbc"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            red-blood-cells
+                          </option>
+                          <option value="0">normal</option>
+                          <option value="1">abnormal</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="pc"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>pus-cells</option>
+                          <option value="0">normal</option>
+                          <option value="1">abnormal</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="pcc"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            pus-cell-clumps
+                          </option>
+                          <option value="1">present</option>
+                          <option value="0">not-present</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="ba"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected hidden>
+                            bacteria
+                          </option>
+                          <option value="1">present</option>
+                          <option value="0">not-present</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="bgr"
+                          placeholder="blood-glucose-random in mgs/dl"
+                          min="20"
+                          max="500"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="bu"
+                          placeholder="blood-urea in mgs/dl"
+                          min="1"
+                          max="400"
+                          step="0.1"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="sc"
+                          placeholder="serum-creatinine in mgs/dl"
+                          min="0.1"
+                          max="80"
+                          step="0.1"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="pot"
+                          placeholder="potassium in mEq/L"
+                          min="1"
+                          max="50"
+                          step="0.1"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="wc"
+                          placeholder="wbc-count in cells/cumm"
+                          min="3000"
+                          max="12000"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="htn"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            hypertension
+                          </option>
+                          <option value="1">yes</option>
+                          <option value="0">no</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="dm"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            diabetes-mellitus
+                          </option>
+                          <option value="1">yes</option>
+                          <option value="0">no</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="cad"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            coronary-artery-disease
+                          </option>
+                          <option value="1">yes</option>
+                          <option value="0">no</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="pe"
+                          style="border: 1px non; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            pedal-edema
+                          </option>
+                          <option value="1">yes</option>
+                          <option value="0">no</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="ane"
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>anemia</option>
+                          <option value="1">yes</option>
+                          <option value="0">no</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="sg"
+                          step="0.001"
+                          placeholder="Specific gravity"
+                          min="1"
+                          max="2"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="sodium"
+                          placeholder="Sodium in mEq/L"
+                          min="1"
+                          max="190"
+                          step="0.1"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="hg"
+                          placeholder="Hameoglobin in mEq/L"
+                          min="1"
+                          max="27"
+                          step="0.1"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input
+                          style="border: 1px none; border-radius: 12px"
+                          class="form-control"
+                          type="number"
+                          name="pcv"
+                          placeholder="packed cell volume"
+                          min="10"
+                          max="70"
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                  <div class="col-md-4">
+                      <div class="form-group">
+                        <select
+                          name="apetite"
+                          style="border: 1px non; border-radius: 12px"
+                          class="form-control"
+                          required
+                        >
+                          <option value="" disabled selected>
+                            Appetitte
+                          </option>
+                          <option value="1">yes</option>
+                          <option value="0">no</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input
+                        style="border: 1px none; border-radius: 12px"
+                        class="form-control"
+                        type="number"
+                        name="rbcc"
+                        step="0.1"
+                        placeholder="rbc-cell-count"
+                        min="1"
+                        max="10"
+                        required
+                      />
+                    </div>
+                </div>
+                  <input
+                    type="submit"
+                    class="btn btn-info btn-block"
+                    style="
+                      width: fit-content;
+                      margin: auto;
+                      padding-left: 35px;
+                      padding-right: 35px;
+                      border-radius: 12px;
+                    "
+                    value="Predict"
+                    required
+                  />
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>'
+        );
+    </script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+  </body>
+</html>
+{% endblock %}

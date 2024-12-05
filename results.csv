@@ -1,0 +1,6 @@
+Models,Testing Accuracy,Training Accuracy,F1_Score,AUC_Score
+Logistic Regression,83.07,86.19,85.45,82.41
+Support Vector Machine,91.53,96.68,92.52,91.51
+Decision Tree,96.83,100.0,97.14,97.22
+Random Forest,98.41,100.0,98.59,98.61
+XGB,98.41,100.0,97.7,97.22
